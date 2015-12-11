@@ -8,10 +8,10 @@ This program shows how to open a [Sketch](https://sketchapp.com) file and parse 
 doesn't try to render the file, and doesn't fully model all of the internal data structures. It is just a proof of
 concept, showing how an open source Sketch file parser could be created.
 
-### How to use
+## How to use
 Look at `parseExample.js` to see how to open and parse a Sketch file.
 
-### Reverse engineering Sketch files
+## Reverse engineering Sketch files
 Sketch files are SQLite3 databases, with binary blobs that are binary-encoded Property Lists (an OSX format).
 
 To decode the property lists, you need class definitions for the internal classes. The main challenge in parsing
