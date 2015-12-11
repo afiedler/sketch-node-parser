@@ -3,7 +3,7 @@ var bplist = require('bplist');
 var _ = require('lodash');
 var MSUnarchiver = require('./src/msArchiver/msUnarchiver');
 
-var db = new sqlite3.Database('./test.sketch', sqlite3.OPEN_READONLY);
+var db = new sqlite3.Database('./example/example.sketch', sqlite3.OPEN_READONLY);
 
 db.each('SELECT * FROM payload', function(err, row) {
   if(err) {
@@ -21,6 +21,8 @@ db.each('SELECT * FROM payload', function(err, row) {
 
     // This has the main sketch data structure
     var top = archive.top();
+    console.log('The first page name is: ' + top.pages[0].name);
+
 
   });
 

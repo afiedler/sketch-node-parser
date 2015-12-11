@@ -1,8 +1,9 @@
 var sqlite3 = require('sqlite3');
 var bplist = require('bplist');
 var _ = require('lodash');
+var fs = require('fs');
 
-var db = new sqlite3.Database('./test.sketch', sqlite3.OPEN_READONLY);
+var db = new sqlite3.Database('./example/example.sketch', sqlite3.OPEN_READONLY);
 
 db.each('SELECT * FROM payload', function(err, row) {
   if(err) {
@@ -13,10 +14,12 @@ db.each('SELECT * FROM payload', function(err, row) {
   bplist.parseBuffer(row.value, function(err, results) {
     if(err) {
       console.log(err);
-      return err;
+      process.exit(-1);
     }
 
     var objects = results[0].$objects;
+
+    fs.writeFileSync('./example/objects.json', JSON.stringify(objects, null, 2));
 
     var classes = _.compact(_.map(objects, (o, idx) => {
       if(o.$classname) {
@@ -47,9 +50,8 @@ db.each('SELECT * FROM payload', function(err, row) {
       obj[c.classname].examples = _.union(obj[c.classname].examples, c.examples);
       return obj;
     }, {});
-    console.log(JSON.stringify(classes));
 
-
+    fs.writeFileSync('./example/classes.json', JSON.stringify(classes, null, 2));
 
   });
 

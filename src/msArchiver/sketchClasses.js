@@ -39,10 +39,10 @@ sketchClasses.MSImmutableImageCollection = function(obj, archive) {
   this.images = obj.images;
 };
 sketchClasses.MSImmutableAssetCollection = function(obj, archive) {
-  this.gradients = obj.gradients;
-  this.colors = obj.colors;
-  this.imageCollection = obj.imageCollection;
-  this.images = obj.images;
+  this.gradients = archive.deserializeByRef(obj.gradients);
+  this.colors = archive.deserializeByRef(obj.colors);
+  this.imageCollection = archive.deserializeByRef(obj.imageCollection);
+  this.images = archive.deserializeByRef(obj.images);
 };
 sketchClasses.MSImmutableSharedLayerStyleContainer = function(obj, archive) {
   this.objects = obj.objects;
