@@ -1,0 +1,683 @@
+[
+  "$null",
+  {
+    "assets": 2,
+    "currentPageIndex": 0,
+    "layerStyles": 16,
+    "pages": 28,
+    "$class": 102,
+    "enableSliceInteraction": true,
+    "layerTextStyles": 24,
+    "enableLayerInteraction": true,
+    "layerSymbols": 20
+  },
+  {
+    "gradients": 7,
+    "colors": 3,
+    "imageCollection": 9,
+    "images": 13,
+    "$class": 15
+  },
+  {
+    "array_do": 4,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "NSMutableArray",
+    "$classes": [
+      "NSMutableArray",
+      "NSArray",
+      "NSObject"
+    ]
+  },
+  {
+    "$classname": "MSImmutableArray",
+    "$classes": [
+      "MSImmutableArray",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "array_do": 8,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "images": 10,
+    "$class": 12
+  },
+  {
+    "$class": 11
+  },
+  {
+    "$classname": "NSDictionary",
+    "$classes": [
+      "NSDictionary",
+      "NSObject"
+    ]
+  },
+  {
+    "$classname": "MSImmutableImageCollection",
+    "$classes": [
+      "MSImmutableImageCollection",
+      "_MSImmutableImageCollection",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "array_do": 14,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "MSImmutableAssetCollection",
+    "$classes": [
+      "MSImmutableAssetCollection",
+      "_MSImmutableAssetCollection",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "objects": 17,
+    "$class": 19
+  },
+  {
+    "array_do": 18,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "MSImmutableSharedLayerStyleContainer",
+    "$classes": [
+      "MSImmutableSharedLayerStyleContainer",
+      "_MSImmutableSharedLayerStyleContainer",
+      "MSImmutableSharedObjectContainer",
+      "_MSImmutableSharedObjectContainer",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "objects": 21,
+    "$class": 23
+  },
+  {
+    "array_do": 22,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "MSImmutableSharedLayerContainer",
+    "$classes": [
+      "MSImmutableSharedLayerContainer",
+      "_MSImmutableSharedLayerContainer",
+      "MSImmutableSharedObjectContainer",
+      "_MSImmutableSharedObjectContainer",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "objects": 25,
+    "$class": 27
+  },
+  {
+    "array_do": 26,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "MSImmutableSharedLayerTextStyleContainer",
+    "$classes": [
+      "MSImmutableSharedLayerTextStyleContainer",
+      "_MSImmutableSharedLayerTextStyleContainer",
+      "MSImmutableSharedLayerStyleContainer",
+      "_MSImmutableSharedLayerStyleContainer",
+      "MSImmutableSharedObjectContainer",
+      "_MSImmutableSharedObjectContainer",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "array_do": 29,
+    "$class": 6
+  },
+  {
+    "$class": 5,
+    "NS.object.0": 30
+  },
+  {
+    "originalObjectID": 0,
+    "isFlippedHorizontal": false,
+    "style": 40,
+    "rotation": 0,
+    "frame": 37,
+    "hasClickThrough": true,
+    "horizontalRulerData": 93,
+    "exportOptions": 31,
+    "layerListExpandedType": 0,
+    "zoomValue": 1,
+    "do_objectID": 100,
+    "$class": 101,
+    "verticalRulerData": 97,
+    "isFlippedVertical": false,
+    "nameIsFixed": false,
+    "name": 39,
+    "layers": 42,
+    "isVisible": true,
+    "userInfo": 0,
+    "grid": 0,
+    "isLocked": false,
+    "scrollOrigin": 80,
+    "layout": 0,
+    "shouldBreakMaskChain": false,
+    "sharedObjectID": 0
+  },
+  {
+    "sizes": 34,
+    "includedLayerIds": 32,
+    "layerOptions": 0,
+    "$class": 36,
+    "shouldTrim": false
+  },
+  {
+    "array_do": 33,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "array_do": 35,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "MSImmutableExportOptions",
+    "$classes": [
+      "MSImmutableExportOptions",
+      "_MSImmutableExportOptions",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "y": 0,
+    "$class": 38,
+    "constrainProportions": false,
+    "width": 300,
+    "height": 300,
+    "x": 0
+  },
+  {
+    "$classname": "MSImmutableRect",
+    "$classes": [
+      "MSImmutableRect",
+      "_MSImmutableRect",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  "Page 1",
+  {
+    "$class": 41,
+    "startDecorationType": 0,
+    "sharedObjectID": 0,
+    "miterLimit": 10,
+    "textStyle": 0,
+    "endDecorationType": 0
+  },
+  {
+    "$classname": "MSImmutableStyle",
+    "$classes": [
+      "MSImmutableStyle",
+      "_MSImmutableStyle",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "array_do": 43,
+    "$class": 6
+  },
+  {
+    "$class": 5,
+    "NS.object.0": 44
+  },
+  {
+    "originalObjectID": 0,
+    "isFlippedHorizontal": false,
+    "style": 52,
+    "rotation": 0,
+    "frame": 50,
+    "hasClickThrough": false,
+    "layerListExpandedType": 1,
+    "exportOptions": 45,
+    "windingRule": 1,
+    "do_objectID": 91,
+    "$class": 92,
+    "isFlippedVertical": false,
+    "clippingMaskMode": 0,
+    "nameIsFixed": false,
+    "layers": 66,
+    "isVisible": true,
+    "hasClippingMask": false,
+    "name": 51,
+    "userInfo": 0,
+    "isLocked": false,
+    "shouldBreakMaskChain": false,
+    "sharedObjectID": 0
+  },
+  {
+    "sizes": 48,
+    "includedLayerIds": 46,
+    "layerOptions": 0,
+    "$class": 36,
+    "shouldTrim": false
+  },
+  {
+    "array_do": 47,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "array_do": 49,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "y": 43,
+    "$class": 38,
+    "constrainProportions": false,
+    "width": 173,
+    "height": 152,
+    "x": 56
+  },
+  "Rectangle 1",
+  {
+    "borders": 53,
+    "startDecorationType": 0,
+    "sharedObjectID": 0,
+    "endDecorationType": 0,
+    "$class": 41,
+    "fills": 60,
+    "textStyle": 0,
+    "miterLimit": 10
+  },
+  {
+    "array_do": 54,
+    "$class": 59
+  },
+  {
+    "$class": 5,
+    "NS.object.0": 55
+  },
+  {
+    "thickness": 1,
+    "fillType": 0,
+    "$class": 58,
+    "isEnabled": true,
+    "position": 1,
+    "color": 56
+  },
+  {
+    "$class": 57,
+    "red": 0.592,
+    "alpha": 1,
+    "blue": 0.592,
+    "green": 0.592
+  },
+  {
+    "$classname": "MSImmutableColor",
+    "$classes": [
+      "MSImmutableColor",
+      "_MSImmutableColor",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "$classname": "MSImmutableStyleBorder",
+    "$classes": [
+      "MSImmutableStyleBorder",
+      "_MSImmutableStyleBorder",
+      "MSImmutableStyleBasicFill",
+      "_MSImmutableStyleBasicFill",
+      "MSImmutableStylePart",
+      "_MSImmutableStylePart",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "$classname": "MSImmutableBorderStyleCollection",
+    "$classes": [
+      "MSImmutableBorderStyleCollection",
+      "MSImmutableStylePartCollection",
+      "MSImmutableArray",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "array_do": 61,
+    "$class": 65
+  },
+  {
+    "$class": 5,
+    "NS.object.0": 62
+  },
+  {
+    "$class": 64,
+    "color": 63,
+    "image": 0,
+    "fillType": 0,
+    "noiseIntensity": 0,
+    "patternFillType": 0,
+    "patternTileScale": 1,
+    "noiseIndex": 0,
+    "isEnabled": true
+  },
+  {
+    "$class": 57,
+    "red": 0.847,
+    "alpha": 1,
+    "blue": 0.847,
+    "green": 0.847
+  },
+  {
+    "$classname": "MSImmutableStyleFill",
+    "$classes": [
+      "MSImmutableStyleFill",
+      "_MSImmutableStyleFill",
+      "MSImmutableStyleBasicFill",
+      "_MSImmutableStyleBasicFill",
+      "MSImmutableStylePart",
+      "_MSImmutableStylePart",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "$classname": "MSImmutableFillStyleCollection",
+    "$classes": [
+      "MSImmutableFillStyleCollection",
+      "MSImmutableStylePartCollection",
+      "MSImmutableArray",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "array_do": 67,
+    "$class": 6
+  },
+  {
+    "$class": 5,
+    "NS.object.0": 68
+  },
+  {
+    "originalObjectID": 0,
+    "isFlippedHorizontal": false,
+    "hasConvertedToNewRoundCorners": true,
+    "rotation": 0,
+    "frame": 74,
+    "do_objectID": 89,
+    "layerListExpandedType": 0,
+    "exportOptions": 69,
+    "edited": false,
+    "$class": 90,
+    "path": 76,
+    "isFlippedVertical": false,
+    "nameIsFixed": false,
+    "name": 75,
+    "isVisible": true,
+    "userInfo": 0,
+    "isLocked": false,
+    "shouldBreakMaskChain": false,
+    "fixedRadius": 0,
+    "booleanOperation": -1
+  },
+  {
+    "sizes": 72,
+    "includedLayerIds": 70,
+    "layerOptions": 0,
+    "$class": 36,
+    "shouldTrim": false
+  },
+  {
+    "array_do": 71,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "array_do": 73,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "y": 0,
+    "$class": 38,
+    "constrainProportions": false,
+    "width": 173,
+    "height": 152,
+    "x": 0
+  },
+  "Path",
+  {
+    "points": 77,
+    "isClosed": true,
+    "$class": 88
+  },
+  {
+    "array_do": 78,
+    "$class": 6
+  },
+  {
+    "$class": 5,
+    "NS.object.1": 82,
+    "NS.object.0": 79,
+    "NS.object.3": 86,
+    "NS.object.2": 84
+  },
+  {
+    "hasCurveFrom": false,
+    "curveMode": 1,
+    "$class": 81,
+    "point": 80,
+    "curveFrom": 80,
+    "cornerRadius": 0,
+    "curveTo": 80,
+    "hasCurveTo": false
+  },
+  "{0, 0}",
+  {
+    "$classname": "MSImmutableCurvePoint",
+    "$classes": [
+      "MSImmutableCurvePoint",
+      "_MSImmutableCurvePoint",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "hasCurveFrom": false,
+    "curveMode": 1,
+    "$class": 81,
+    "point": 83,
+    "curveFrom": 83,
+    "cornerRadius": 0,
+    "curveTo": 83,
+    "hasCurveTo": false
+  },
+  "{1, 0}",
+  {
+    "hasCurveFrom": false,
+    "curveMode": 1,
+    "$class": 81,
+    "point": 85,
+    "curveFrom": 85,
+    "cornerRadius": 0,
+    "curveTo": 85,
+    "hasCurveTo": false
+  },
+  "{1, 1}",
+  {
+    "hasCurveFrom": false,
+    "curveMode": 1,
+    "$class": 81,
+    "point": 87,
+    "curveFrom": 87,
+    "cornerRadius": 0,
+    "curveTo": 87,
+    "hasCurveTo": false
+  },
+  "{0, 1}",
+  {
+    "$classname": "MSImmutableShapePath",
+    "$classes": [
+      "MSImmutableShapePath",
+      "_MSImmutableShapePath",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  "BCEF8A49-A00D-4DD1-85B2-E9C3732FCA60",
+  {
+    "$classname": "MSImmutableRectangleShape",
+    "$classes": [
+      "MSImmutableRectangleShape",
+      "_MSImmutableRectangleShape",
+      "MSImmutableCustomShapeLayer",
+      "_MSImmutableCustomShapeLayer",
+      "MSImmutableShapePathLayer",
+      "_MSImmutableShapePathLayer",
+      "MSImmutableLayer",
+      "_MSImmutableLayer",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  "E2149308-DBBE-4F59-8A9E-BA1D2963C0C4",
+  {
+    "$classname": "MSImmutableShapeGroup",
+    "$classes": [
+      "MSImmutableShapeGroup",
+      "_MSImmutableShapeGroup",
+      "MSImmutableLayerGroup",
+      "_MSImmutableLayerGroup",
+      "MSImmutableStyledLayer",
+      "_MSImmutableStyledLayer",
+      "MSImmutableLayer",
+      "_MSImmutableLayer",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "base": 0,
+    "guides": 94,
+    "$class": 96
+  },
+  {
+    "array_do": 95,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  {
+    "$classname": "MSImmutableRulerData",
+    "$classes": [
+      "MSImmutableRulerData",
+      "_MSImmutableRulerData",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "base": 0,
+    "guides": 98,
+    "$class": 96
+  },
+  {
+    "array_do": 99,
+    "$class": 6
+  },
+  {
+    "$class": 5
+  },
+  "28071DE2-ADF3-4CB2-9461-CC476A19D450",
+  {
+    "$classname": "MSImmutablePage",
+    "$classes": [
+      "MSImmutablePage",
+      "_MSImmutablePage",
+      "MSImmutableLayerGroup",
+      "_MSImmutableLayerGroup",
+      "MSImmutableStyledLayer",
+      "_MSImmutableStyledLayer",
+      "MSImmutableLayer",
+      "_MSImmutableLayer",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  },
+  {
+    "$classname": "MSImmutableDocumentData",
+    "$classes": [
+      "MSImmutableDocumentData",
+      "_MSImmutableDocumentData",
+      "MSImmutableModelBase",
+      "MSModelObject",
+      "NSObject"
+    ]
+  }
+]

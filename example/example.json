@@ -1,0 +1,796 @@
+{
+  "NSMutableArray": {
+    "index": 5,
+    "fields": [
+      "$class",
+      "NS.object.0",
+      "NS.object.1",
+      "NS.object.3",
+      "NS.object.2"
+    ],
+    "examples": [
+      {
+        "$class": 5,
+        "$$id": 4
+      },
+      {
+        "$class": 5,
+        "$$id": 8
+      },
+      {
+        "$class": 5,
+        "$$id": 14
+      },
+      {
+        "$class": 5,
+        "$$id": 18
+      },
+      {
+        "$class": 5,
+        "$$id": 22
+      },
+      {
+        "$class": 5,
+        "$$id": 26
+      },
+      {
+        "$class": 5,
+        "NS.object.0": 30,
+        "$$id": 29
+      },
+      {
+        "$class": 5,
+        "$$id": 33
+      },
+      {
+        "$class": 5,
+        "$$id": 35
+      },
+      {
+        "$class": 5,
+        "NS.object.0": 44,
+        "$$id": 43
+      },
+      {
+        "$class": 5,
+        "$$id": 47
+      },
+      {
+        "$class": 5,
+        "$$id": 49
+      },
+      {
+        "$class": 5,
+        "NS.object.0": 55,
+        "$$id": 54
+      },
+      {
+        "$class": 5,
+        "NS.object.0": 62,
+        "$$id": 61
+      },
+      {
+        "$class": 5,
+        "NS.object.0": 68,
+        "$$id": 67
+      },
+      {
+        "$class": 5,
+        "$$id": 71
+      },
+      {
+        "$class": 5,
+        "$$id": 73
+      },
+      {
+        "$class": 5,
+        "NS.object.1": 82,
+        "NS.object.0": 79,
+        "NS.object.3": 86,
+        "NS.object.2": 84,
+        "$$id": 78
+      },
+      {
+        "$class": 5,
+        "$$id": 95
+      },
+      {
+        "$class": 5,
+        "$$id": 99
+      }
+    ]
+  },
+  "MSImmutableArray": {
+    "index": 6,
+    "fields": [
+      "array_do",
+      "$class"
+    ],
+    "examples": [
+      {
+        "array_do": 4,
+        "$class": 6,
+        "$$id": 3
+      },
+      {
+        "array_do": 8,
+        "$class": 6,
+        "$$id": 7
+      },
+      {
+        "array_do": 14,
+        "$class": 6,
+        "$$id": 13
+      },
+      {
+        "array_do": 18,
+        "$class": 6,
+        "$$id": 17
+      },
+      {
+        "array_do": 22,
+        "$class": 6,
+        "$$id": 21
+      },
+      {
+        "array_do": 26,
+        "$class": 6,
+        "$$id": 25
+      },
+      {
+        "array_do": 29,
+        "$class": 6,
+        "$$id": 28
+      },
+      {
+        "array_do": 33,
+        "$class": 6,
+        "$$id": 32
+      },
+      {
+        "array_do": 35,
+        "$class": 6,
+        "$$id": 34
+      },
+      {
+        "array_do": 43,
+        "$class": 6,
+        "$$id": 42
+      },
+      {
+        "array_do": 47,
+        "$class": 6,
+        "$$id": 46
+      },
+      {
+        "array_do": 49,
+        "$class": 6,
+        "$$id": 48
+      },
+      {
+        "array_do": 67,
+        "$class": 6,
+        "$$id": 66
+      },
+      {
+        "array_do": 71,
+        "$class": 6,
+        "$$id": 70
+      },
+      {
+        "array_do": 73,
+        "$class": 6,
+        "$$id": 72
+      },
+      {
+        "array_do": 78,
+        "$class": 6,
+        "$$id": 77
+      },
+      {
+        "array_do": 95,
+        "$class": 6,
+        "$$id": 94
+      },
+      {
+        "array_do": 99,
+        "$class": 6,
+        "$$id": 98
+      }
+    ]
+  },
+  "NSDictionary": {
+    "index": 11,
+    "fields": [
+      "$class"
+    ],
+    "examples": [
+      {
+        "$class": 11,
+        "$$id": 10
+      }
+    ]
+  },
+  "MSImmutableImageCollection": {
+    "index": 12,
+    "fields": [
+      "images",
+      "$class"
+    ],
+    "examples": [
+      {
+        "images": 10,
+        "$class": 12,
+        "$$id": 9
+      }
+    ]
+  },
+  "MSImmutableAssetCollection": {
+    "index": 15,
+    "fields": [
+      "gradients",
+      "colors",
+      "imageCollection",
+      "images",
+      "$class"
+    ],
+    "examples": [
+      {
+        "gradients": 7,
+        "colors": 3,
+        "imageCollection": 9,
+        "images": 13,
+        "$class": 15,
+        "$$id": 2
+      }
+    ]
+  },
+  "MSImmutableSharedLayerStyleContainer": {
+    "index": 19,
+    "fields": [
+      "objects",
+      "$class"
+    ],
+    "examples": [
+      {
+        "objects": 17,
+        "$class": 19,
+        "$$id": 16
+      }
+    ]
+  },
+  "MSImmutableSharedLayerContainer": {
+    "index": 23,
+    "fields": [
+      "objects",
+      "$class"
+    ],
+    "examples": [
+      {
+        "objects": 21,
+        "$class": 23,
+        "$$id": 20
+      }
+    ]
+  },
+  "MSImmutableSharedLayerTextStyleContainer": {
+    "index": 27,
+    "fields": [
+      "objects",
+      "$class"
+    ],
+    "examples": [
+      {
+        "objects": 25,
+        "$class": 27,
+        "$$id": 24
+      }
+    ]
+  },
+  "MSImmutableExportOptions": {
+    "index": 36,
+    "fields": [
+      "sizes",
+      "includedLayerIds",
+      "layerOptions",
+      "$class",
+      "shouldTrim"
+    ],
+    "examples": [
+      {
+        "sizes": 34,
+        "includedLayerIds": 32,
+        "layerOptions": 0,
+        "$class": 36,
+        "shouldTrim": false,
+        "$$id": 31
+      },
+      {
+        "sizes": 48,
+        "includedLayerIds": 46,
+        "layerOptions": 0,
+        "$class": 36,
+        "shouldTrim": false,
+        "$$id": 45
+      },
+      {
+        "sizes": 72,
+        "includedLayerIds": 70,
+        "layerOptions": 0,
+        "$class": 36,
+        "shouldTrim": false,
+        "$$id": 69
+      }
+    ]
+  },
+  "MSImmutableRect": {
+    "index": 38,
+    "fields": [
+      "y",
+      "$class",
+      "constrainProportions",
+      "width",
+      "height",
+      "x"
+    ],
+    "examples": [
+      {
+        "y": 0,
+        "$class": 38,
+        "constrainProportions": false,
+        "width": 300,
+        "height": 300,
+        "x": 0,
+        "$$id": 37
+      },
+      {
+        "y": 43,
+        "$class": 38,
+        "constrainProportions": false,
+        "width": 173,
+        "height": 152,
+        "x": 56,
+        "$$id": 50
+      },
+      {
+        "y": 0,
+        "$class": 38,
+        "constrainProportions": false,
+        "width": 173,
+        "height": 152,
+        "x": 0,
+        "$$id": 74
+      }
+    ]
+  },
+  "MSImmutableStyle": {
+    "index": 41,
+    "fields": [
+      "$class",
+      "startDecorationType",
+      "sharedObjectID",
+      "miterLimit",
+      "textStyle",
+      "endDecorationType",
+      "borders",
+      "fills"
+    ],
+    "examples": [
+      {
+        "$class": 41,
+        "startDecorationType": 0,
+        "sharedObjectID": 0,
+        "miterLimit": 10,
+        "textStyle": 0,
+        "endDecorationType": 0,
+        "$$id": 40
+      },
+      {
+        "borders": 53,
+        "startDecorationType": 0,
+        "sharedObjectID": 0,
+        "endDecorationType": 0,
+        "$class": 41,
+        "fills": 60,
+        "textStyle": 0,
+        "miterLimit": 10,
+        "$$id": 52
+      }
+    ]
+  },
+  "MSImmutableColor": {
+    "index": 57,
+    "fields": [
+      "$class",
+      "red",
+      "alpha",
+      "blue",
+      "green"
+    ],
+    "examples": [
+      {
+        "$class": 57,
+        "red": 0.592,
+        "alpha": 1,
+        "blue": 0.592,
+        "green": 0.592,
+        "$$id": 56
+      },
+      {
+        "$class": 57,
+        "red": 0.847,
+        "alpha": 1,
+        "blue": 0.847,
+        "green": 0.847,
+        "$$id": 63
+      }
+    ]
+  },
+  "MSImmutableStyleBorder": {
+    "index": 58,
+    "fields": [
+      "thickness",
+      "fillType",
+      "$class",
+      "isEnabled",
+      "position",
+      "color"
+    ],
+    "examples": [
+      {
+        "thickness": 1,
+        "fillType": 0,
+        "$class": 58,
+        "isEnabled": true,
+        "position": 1,
+        "color": 56,
+        "$$id": 55
+      }
+    ]
+  },
+  "MSImmutableBorderStyleCollection": {
+    "index": 59,
+    "fields": [
+      "array_do",
+      "$class"
+    ],
+    "examples": [
+      {
+        "array_do": 54,
+        "$class": 59,
+        "$$id": 53
+      }
+    ]
+  },
+  "MSImmutableStyleFill": {
+    "index": 64,
+    "fields": [
+      "$class",
+      "color",
+      "image",
+      "fillType",
+      "noiseIntensity",
+      "patternFillType",
+      "patternTileScale",
+      "noiseIndex",
+      "isEnabled"
+    ],
+    "examples": [
+      {
+        "$class": 64,
+        "color": 63,
+        "image": 0,
+        "fillType": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 0,
+        "patternTileScale": 1,
+        "noiseIndex": 0,
+        "isEnabled": true,
+        "$$id": 62
+      }
+    ]
+  },
+  "MSImmutableFillStyleCollection": {
+    "index": 65,
+    "fields": [
+      "array_do",
+      "$class"
+    ],
+    "examples": [
+      {
+        "array_do": 61,
+        "$class": 65,
+        "$$id": 60
+      }
+    ]
+  },
+  "MSImmutableCurvePoint": {
+    "index": 81,
+    "fields": [
+      "hasCurveFrom",
+      "curveMode",
+      "$class",
+      "point",
+      "curveFrom",
+      "cornerRadius",
+      "curveTo",
+      "hasCurveTo"
+    ],
+    "examples": [
+      {
+        "hasCurveFrom": false,
+        "curveMode": 1,
+        "$class": 81,
+        "point": 80,
+        "curveFrom": 80,
+        "cornerRadius": 0,
+        "curveTo": 80,
+        "hasCurveTo": false,
+        "$$id": 79
+      },
+      {
+        "hasCurveFrom": false,
+        "curveMode": 1,
+        "$class": 81,
+        "point": 83,
+        "curveFrom": 83,
+        "cornerRadius": 0,
+        "curveTo": 83,
+        "hasCurveTo": false,
+        "$$id": 82
+      },
+      {
+        "hasCurveFrom": false,
+        "curveMode": 1,
+        "$class": 81,
+        "point": 85,
+        "curveFrom": 85,
+        "cornerRadius": 0,
+        "curveTo": 85,
+        "hasCurveTo": false,
+        "$$id": 84
+      },
+      {
+        "hasCurveFrom": false,
+        "curveMode": 1,
+        "$class": 81,
+        "point": 87,
+        "curveFrom": 87,
+        "cornerRadius": 0,
+        "curveTo": 87,
+        "hasCurveTo": false,
+        "$$id": 86
+      }
+    ]
+  },
+  "MSImmutableShapePath": {
+    "index": 88,
+    "fields": [
+      "points",
+      "isClosed",
+      "$class"
+    ],
+    "examples": [
+      {
+        "points": 77,
+        "isClosed": true,
+        "$class": 88,
+        "$$id": 76
+      }
+    ]
+  },
+  "MSImmutableRectangleShape": {
+    "index": 90,
+    "fields": [
+      "originalObjectID",
+      "isFlippedHorizontal",
+      "hasConvertedToNewRoundCorners",
+      "rotation",
+      "frame",
+      "do_objectID",
+      "layerListExpandedType",
+      "exportOptions",
+      "edited",
+      "$class",
+      "path",
+      "isFlippedVertical",
+      "nameIsFixed",
+      "name",
+      "isVisible",
+      "userInfo",
+      "isLocked",
+      "shouldBreakMaskChain",
+      "fixedRadius",
+      "booleanOperation"
+    ],
+    "examples": [
+      {
+        "originalObjectID": 0,
+        "isFlippedHorizontal": false,
+        "hasConvertedToNewRoundCorners": true,
+        "rotation": 0,
+        "frame": 74,
+        "do_objectID": 89,
+        "layerListExpandedType": 0,
+        "exportOptions": 69,
+        "edited": false,
+        "$class": 90,
+        "path": 76,
+        "isFlippedVertical": false,
+        "nameIsFixed": false,
+        "name": 75,
+        "isVisible": true,
+        "userInfo": 0,
+        "isLocked": false,
+        "shouldBreakMaskChain": false,
+        "fixedRadius": 0,
+        "booleanOperation": -1,
+        "$$id": 68
+      }
+    ]
+  },
+  "MSImmutableShapeGroup": {
+    "index": 92,
+    "fields": [
+      "originalObjectID",
+      "isFlippedHorizontal",
+      "style",
+      "rotation",
+      "frame",
+      "hasClickThrough",
+      "layerListExpandedType",
+      "exportOptions",
+      "windingRule",
+      "do_objectID",
+      "$class",
+      "isFlippedVertical",
+      "clippingMaskMode",
+      "nameIsFixed",
+      "layers",
+      "isVisible",
+      "hasClippingMask",
+      "name",
+      "userInfo",
+      "isLocked",
+      "shouldBreakMaskChain",
+      "sharedObjectID"
+    ],
+    "examples": [
+      {
+        "originalObjectID": 0,
+        "isFlippedHorizontal": false,
+        "style": 52,
+        "rotation": 0,
+        "frame": 50,
+        "hasClickThrough": false,
+        "layerListExpandedType": 1,
+        "exportOptions": 45,
+        "windingRule": 1,
+        "do_objectID": 91,
+        "$class": 92,
+        "isFlippedVertical": false,
+        "clippingMaskMode": 0,
+        "nameIsFixed": false,
+        "layers": 66,
+        "isVisible": true,
+        "hasClippingMask": false,
+        "name": 51,
+        "userInfo": 0,
+        "isLocked": false,
+        "shouldBreakMaskChain": false,
+        "sharedObjectID": 0,
+        "$$id": 44
+      }
+    ]
+  },
+  "MSImmutableRulerData": {
+    "index": 96,
+    "fields": [
+      "base",
+      "guides",
+      "$class"
+    ],
+    "examples": [
+      {
+        "base": 0,
+        "guides": 94,
+        "$class": 96,
+        "$$id": 93
+      },
+      {
+        "base": 0,
+        "guides": 98,
+        "$class": 96,
+        "$$id": 97
+      }
+    ]
+  },
+  "MSImmutablePage": {
+    "index": 101,
+    "fields": [
+      "originalObjectID",
+      "isFlippedHorizontal",
+      "style",
+      "rotation",
+      "frame",
+      "hasClickThrough",
+      "horizontalRulerData",
+      "exportOptions",
+      "layerListExpandedType",
+      "zoomValue",
+      "do_objectID",
+      "$class",
+      "verticalRulerData",
+      "isFlippedVertical",
+      "nameIsFixed",
+      "name",
+      "layers",
+      "isVisible",
+      "userInfo",
+      "grid",
+      "isLocked",
+      "scrollOrigin",
+      "layout",
+      "shouldBreakMaskChain",
+      "sharedObjectID"
+    ],
+    "examples": [
+      {
+        "originalObjectID": 0,
+        "isFlippedHorizontal": false,
+        "style": 40,
+        "rotation": 0,
+        "frame": 37,
+        "hasClickThrough": true,
+        "horizontalRulerData": 93,
+        "exportOptions": 31,
+        "layerListExpandedType": 0,
+        "zoomValue": 1,
+        "do_objectID": 100,
+        "$class": 101,
+        "verticalRulerData": 97,
+        "isFlippedVertical": false,
+        "nameIsFixed": false,
+        "name": 39,
+        "layers": 42,
+        "isVisible": true,
+        "userInfo": 0,
+        "grid": 0,
+        "isLocked": false,
+        "scrollOrigin": 80,
+        "layout": 0,
+        "shouldBreakMaskChain": false,
+        "sharedObjectID": 0,
+        "$$id": 30
+      }
+    ]
+  },
+  "MSImmutableDocumentData": {
+    "index": 102,
+    "fields": [
+      "assets",
+      "currentPageIndex",
+      "layerStyles",
+      "pages",
+      "$class",
+      "enableSliceInteraction",
+      "layerTextStyles",
+      "enableLayerInteraction",
+      "layerSymbols"
+    ],
+    "examples": [
+      {
+        "assets": 2,
+        "currentPageIndex": 0,
+        "layerStyles": 16,
+        "pages": 28,
+        "$class": 102,
+        "enableSliceInteraction": true,
+        "layerTextStyles": 24,
+        "enableLayerInteraction": true,
+        "layerSymbols": 20,
+        "$$id": 1
+      }
+    ]
+  }
+}

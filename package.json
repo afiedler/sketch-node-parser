@@ -1,0 +1,32 @@
+{
+  "name": "sketch-node-parser",
+  "version": "0.0.1",
+  "description": "Parse files from Sketch using pure NodeJS",
+  "main": "index.js",
+  "dependencies": {
+    "bplist": "0.0.4",
+    "bplist-parser": "^0.1.1",
+    "lodash": "^3.10.1",
+    "object-assign": "^4.0.1",
+    "sqlite3": "^3.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afiedler/sketch-node-parser.git"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "sketch"
+  ],
+  "author": "Andy Fiedler <andy@andyfiedler.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/afiedler/sketch-node-parser/issues"
+  },
+  "homepage": "https://github.com/afiedler/sketch-node-parser#readme"
+}
