@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3');
 const bplist = require('bplist');
-const MSUnarchiver = require('./msArchiver/msUnarchiver');
+const MSUnarchiver = require('./MSUnarchiver');
 
 /**
  * SQLite queries for .sketch database files

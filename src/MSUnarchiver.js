@@ -1,5 +1,5 @@
 'use strict';
-const sketchClasses = require('./sketchClasses');
+const sketchClasses = require('./classes');
 
 module.exports = class MSUnarchiver {
 
