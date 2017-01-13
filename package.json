@@ -4,6 +4,7 @@
   "description": "Parse files from Sketch using pure NodeJS",
   "main": "src/parse.js",
   "dependencies": {
+    "atob": "^2.0.3",
     "bplist": "0.0.4",
     "fs-promise": "^1.0.0",
     "sqlite3": "^3.1.1",
