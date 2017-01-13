@@ -1,20 +1,26 @@
-var ObjectAssign = require('object-assign');
-var _ = require('lodash');
+const sketchClasses = module.exports = {};
 
-var sketchClasses = module.exports = {};
+const classFactory = (literals, refs) => {
+  return function(obj, archive) {
+    literals.forEach(key => this[key] = obj[key]);
+    refs.forEach(key => this[key] = archive.deserializeByRef(obj[key]));
+  };
+};
 
-sketchClasses.MSImmutableDocumentData = function(obj, archive) { ObjectAssign(this, obj); };
+sketchClasses.MSImmutableDocumentData = function(obj, archive) {
+  Object.assign(this, obj);
+};
 
 /*
- * obj has the format: { "NS.object.#": <ref> }, where # is the array index and <ref> is a reference to the object at
- * that index
+ * obj has the format: { "NS.object.#": <ref> }, where # is the array index and
+ * <ref> is a reference to the object at that index
  */
 sketchClasses.NSMutableArray = function(obj, archive) {
   // We want NSMutableArray to be Array-like
-  var ret = Object.create(Array.prototype);
+  const ret = Object.create(Array.prototype);
 
-  _.each(Object.keys(obj), (k) => {
-    if(k === '$class') return;
+  Object.keys(obj).forEach(k => {
+    if (k === '$class') return;
     var match = /NS.object.(\d+)/.exec(k);
     var idx;
     if(match) {
@@ -32,33 +38,53 @@ sketchClasses.NSMutableArray = function(obj, archive) {
 sketchClasses.MSImmutableArray = function(obj, archive) {
   return archive.deserializeByRef(obj.array_do);
 };
-sketchClasses.NSDictionary = function(obj, archive) {
 
+sketchClasses.NSDictionary = function(obj, archive) {
+  const KEY_PATTERN = /^NS\.key.(\d+)$/;
+  const OBJ_PREFIX = 'NS.object.';
+
+  Object.keys(obj).forEach(k => {
+    const match = k.match(KEY_PATTERN);
+    if (match) {
+      const keyIndex = obj[OBJ_PREFIX + match[1]];
+      const key = archive.deserializeByRef(keyIndex);
+      const valIndex = obj[k];
+      const val = archive.deserializeByRef(valIndex);
+      this[key] = val;
+    }
+  });
 };
+
 sketchClasses.MSImmutableImageCollection = function(obj, archive) {
   this.images = obj.images;
 };
+
 sketchClasses.MSImmutableAssetCollection = function(obj, archive) {
   this.gradients = archive.deserializeByRef(obj.gradients);
   this.colors = archive.deserializeByRef(obj.colors);
   this.imageCollection = archive.deserializeByRef(obj.imageCollection);
   this.images = archive.deserializeByRef(obj.images);
 };
+
 sketchClasses.MSImmutableSharedLayerStyleContainer = function(obj, archive) {
   this.objects = obj.objects;
 };
+
 sketchClasses.MSImmutableSharedLayerContainer = function(obj, archive) {
   this.objects = obj.objects;
 };
+
 sketchClasses.MSImmutableSharedLayerTextStyleContainer = function(obj, archive) {
   this.objects = obj.objects;
 };
+
 sketchClasses.MSImmutableExportOptions = function(obj, archive) {
   this.sizes = obj.sizes;
   this.includedLayerIds = obj.includedLayerIds;
   this.layerOptions = obj.layerOptions;
   this.shouldTrim = obj.shouldTrim;
 };
+
 sketchClasses.MSImmutableRect = function(obj, archive) {
   this.y = obj.y;
   this.x = obj.x;
@@ -66,6 +92,7 @@ sketchClasses.MSImmutableRect = function(obj, archive) {
   this.width = obj.width;
   this.height = obj.height;
 };
+
 sketchClasses.MSImmutableStyle = function(obj, archive) {
   this.startDecorationType = obj.startDecorationType;
   this.sharedObjectId = obj.sharedObjectId;
@@ -76,12 +103,14 @@ sketchClasses.MSImmutableStyle = function(obj, archive) {
   this.borders = obj.borders;
   this.fills = obj.fills;
 };
+
 sketchClasses.MSImmutableColor = function(obj, archive) {
   this.red = obj.red;
   this.blue = obj.blue;
   this.green = obj.green;
   this.alpha = obj.alpha;
 };
+
 sketchClasses.MSImmutableStyleBorder = function(obj, archive) {
   this.thickness = obj.thickness;
   this.fillType = obj.fillType;
@@ -89,9 +118,11 @@ sketchClasses.MSImmutableStyleBorder = function(obj, archive) {
   this.position = obj.position;
   this.color = archive.deserializeByRef(obj.color);
 };
+
 sketchClasses.MSImmutableBorderStyleCollection = function(obj, archive) {
   return archive.deserializeByRef(obj.array_do);
 };
+
 sketchClasses.MSImmutableStyleFill = function(obj, archive) {
   this.color = archive.deserializeByRef(obj.color);
   this.image = archive.deserializeByRef(obj.image);
@@ -101,9 +132,11 @@ sketchClasses.MSImmutableStyleFill = function(obj, archive) {
   this.patternTileScale = obj.patternTileScale;
   this.isEnabled = obj.isEnabled;
 };
+
 sketchClasses.MSImmutableFillStyleCollection = function(obj, archive) {
   this.array =  archive.deserializeByRef(obj.array_do);
 };
+
 sketchClasses.MSImmutableCurvePoint = function(obj, archive) {
   this.hasCurveForm = obj.hasCurveForm;
   this.curveMode = obj.curveMode;
@@ -113,10 +146,12 @@ sketchClasses.MSImmutableCurvePoint = function(obj, archive) {
   this.hasCurveTo = obj.hasCurveTo;
   this.cornerRadius = obj.cornerRadius;
 };
+
 sketchClasses.MSImmutableShapePath = function(obj, archive) {
   this.points = archive.deserializeByRef(obj.points);
   this.isClosed = obj.isClosed;
 };
+
 sketchClasses.MSImmutableRectangleShape = function(obj, archive) {
   this.originalObjectId = obj.originalObjectId;
   this.isFlippedHorizontal = obj.isFlippedHorizontal;
@@ -138,6 +173,7 @@ sketchClasses.MSImmutableRectangleShape = function(obj, archive) {
   this.fixedRadius = obj.fixedRadius;
   this.booleanOperation = obj.booleanOperation;
 };
+
 sketchClasses.MSImmutableShapeGroup = function(obj, archive) {
   this.originalObjectID = obj.originalObjectID;
   this.isFlippedHorizontal = obj.isFlippedHorizontal;
@@ -161,10 +197,12 @@ sketchClasses.MSImmutableShapeGroup = function(obj, archive) {
   this.shouldBreakMaskChain = obj.shouldBreakMaskChain;
   this.sharedObjectID = obj.sharedObjectID;
 };
+
 sketchClasses.MSImmutableRulerData = function(obj, archive) {
   this.base = obj.base;
   this.guides = obj.guides;
 };
+
 sketchClasses.MSImmutablePage = function(obj, archive) {
   this.originalObjectId = obj.originalObjectId;
   this.isFlippedHorizontal = obj.isFlippedHorizontal;
