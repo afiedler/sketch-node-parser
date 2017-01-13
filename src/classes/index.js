@@ -15,11 +15,9 @@ const classFactory = (literals, refs) => {
   };
 };
 
-/*
 classes.MSImmutableDocumentData = function(obj, archive) {
-  Object.assign(this, obj);
+  archive.deserializeAll(obj, this);
 };
-*/
 
 /*
  * obj has the format: { "NS.object.#": <ref> }, where # is the array index and
