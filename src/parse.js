@@ -18,7 +18,13 @@ const query = {
  */
 const parseFile = (path) => {
   const db = new sqlite3.Database(path, sqlite3.OPEN_READONLY);
-  return parseDatabase(db).always(() => db.close());
+  const close = () => db.close();
+  return parseDatabase(db)
+    .catch(close)
+    .then(data => {
+      close();
+      return data;
+    });
 };
 
 /**
@@ -31,7 +37,6 @@ const parseFile = (path) => {
  */
 const parseDatabase = (db) => {
   return new Promise((resolve, reject) => {
-
     db.get(query.main, (error, row) => {
       if (error) return reject(error);
       bplist.parseBuffer(row.value, (error, results) => {
@@ -41,7 +46,6 @@ const parseDatabase = (db) => {
         });
       });
     });
-
   });
 };
 
