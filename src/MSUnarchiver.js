@@ -1,5 +1,7 @@
 'use strict';
+
 const sketchClasses = require('./classes');
+const NULL = '$null';
 
 module.exports = class MSUnarchiver {
 
@@ -17,7 +19,7 @@ module.exports = class MSUnarchiver {
   }
 
   deserialize(obj) {
-    if (obj.$class) {
+    if (obj && obj.$class) {
       var classname = this.getByRef(obj.$class).$classname;
       if (classname in sketchClasses) {
         return new sketchClasses[classname](obj, this);
@@ -25,12 +27,12 @@ module.exports = class MSUnarchiver {
         console.warn('no deserializer class for:', classname);
         return this.deserializeAll(obj, {'$classname': classname});
       }
-    } else if (obj === '$null') {
+    } else if (obj === NULL) {
       return null;
     } else if (typeof obj === 'string') {
       return obj;
     } else {
-      throw new Error('not able to deserialize: ' + JSON.stringify(obj));
+      console.warn('unable to deserialize: ' + JSON.stringify(obj));
     }
   }
 
@@ -45,7 +47,7 @@ module.exports = class MSUnarchiver {
         const indexOrValue = obj[key];
         dest[key] = (indexOrValue === this._root)
           ? indexOrValue
-          : this.deserializeByRef(val);
+          : this.deserializeByRef(indexOrValue);
       }
     });
     return dest;
