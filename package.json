@@ -5,7 +5,9 @@
   "main": "src/parse.js",
   "dependencies": {
     "bplist": "0.0.4",
-    "sqlite3": "^3.1.1"
+    "fs-promise": "^1.0.0",
+    "sqlite3": "^3.1.1",
+    "yargs": "^6.6.0"
   },
   "devDependencies": {
     "mocha": "^3.2.0"
