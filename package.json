@@ -2,7 +2,7 @@
   "name": "sketch-node-parser",
   "version": "0.0.1",
   "description": "Parse files from Sketch using pure NodeJS",
-  "main": "index.js",
+  "main": "src/parse.js",
   "dependencies": {
     "bplist": "0.0.4",
     "sqlite3": "^3.1.1"
