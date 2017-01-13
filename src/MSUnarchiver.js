@@ -48,10 +48,14 @@ module.exports = class MSUnarchiver {
     return val;
   }
 
-  deserializeAll(obj, into) {
+  deserializeAll(obj, into, except) {
     const dest = into || {};
+    const reject = (except instanceof Set) ? except : new Set();
+    if (Array.isArray(except)) {
+      except.forEach(v => reject.add(v));
+    }
     Object.keys(obj).forEach(key => {
-      if (key.charAt(0) !== '$') {
+      if (key.charAt(0) !== '$' || reject.has(key)) {
         const indexOrValue = obj[key];
         dest[key] = (indexOrValue === this._root)
           ? indexOrValue
