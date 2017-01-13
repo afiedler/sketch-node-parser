@@ -2,17 +2,22 @@
   "name": "sketch-node-parser",
   "version": "0.0.1",
   "description": "Parse files from Sketch using pure NodeJS",
-  "main": "index.js",
-  "dependencies": {
-    "bplist": "0.0.4",
-    "bplist-parser": "^0.1.1",
-    "lodash": "^3.10.1",
-    "object-assign": "^4.0.1",
-    "sqlite3": "^3.1.1"
+  "main": "src/parse.js",
+  "bin": {
+    "unsketch": "bin/unsketch"
   },
-  "devDependencies": {},
+  "dependencies": {
+    "atob": "^2.0.3",
+    "bplist": "0.0.4",
+    "fs-promise": "^1.0.0",
+    "sqlite3": "^3.1.1",
+    "yargs": "^6.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
