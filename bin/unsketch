@@ -1,0 +1,44 @@
+#!/usr/bin/env node --harmony
+'use strict';
+
+const fs = require('fs-promise');
+const parse = require('..');
+const yargs = require('yargs')
+  .usage('$0 [-o output.json] <input.sketch>');
+
+const options = yargs.argv;
+const filenames = options._;
+
+if (filenames.length < 1) {
+  console.warn('You must provide a .sketch input file path');
+  return yargs.showHelp();
+} else if (filenames.length > 1) {
+  console.warn('You may not parse more than one .sketch file at a time');
+  return yargs.showHelp();
+}
+
+const filename = filenames[0];
+console.warn('parsing:', filename);
+console.time('parse');
+parse.file(filenames[0])
+  .then(result => {
+    console.timeEnd('parse');
+
+    const doc = result.archive.root;
+    console.warn('doc:', doc);
+
+    console.time('stringify');
+    const json = JSON.stringify(doc, null, '  ');
+    console.timeEnd('stringify');
+
+    if (options.o) {
+      return fs.writeFile(options.o, json, 'utf8');
+    } else {
+      process.stdout.write(json);
+      process.stdout.write('\n');
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  })
