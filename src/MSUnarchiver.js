@@ -8,36 +8,44 @@ module.exports = class MSUnarchiver {
   constructor(archive) {
     this._archive = archive;
     this._root = this._archive.$top.root;
+    this._refs = new Map();
   }
 
   get root() {
     return this.deserializeByRef(this._root);
   }
 
-  getByRef(ref) {
-    return this._archive.$objects[ref];
-  }
-
-  deserialize(obj) {
+  deserialize(obj, ref) {
     if (obj && obj.$class) {
-      var classname = this.getByRef(obj.$class).$classname;
+      const classname = this.getByRef(obj.$class).$classname;
       if (classname in sketchClasses) {
-        return new sketchClasses[classname](obj, this);
+        const instance = new sketchClasses[classname](obj, this);
+        // instance.$classname = classname;
+        return instance;
       } else {
         console.warn('no deserializer class for:', classname);
-        return this.deserializeAll(obj, {'$classname': classname});
+        obj.$index = ref;
+        obj.$classname = classname;
+        return obj;
       }
     } else if (obj === NULL) {
       return null;
     } else if (typeof obj === 'string') {
       return obj;
     } else {
-      console.warn('unable to deserialize: ' + JSON.stringify(obj));
+      throw new Error('unable to deserialize: ' + JSON.stringify(obj));
     }
   }
 
   deserializeByRef(ref) {
-    return this.deserialize(this.getByRef(ref));
+    if (this._refs.has(ref)) {
+      return this._refs.get(ref);
+    }
+    const val = this.hasRef(ref)
+      ? this.deserialize(this.getByRef(ref))
+      : ref;
+    this._refs.set(ref, val);
+    return val;
   }
 
   deserializeAll(obj, into) {
@@ -52,4 +60,13 @@ module.exports = class MSUnarchiver {
     });
     return dest;
   }
+
+  hasRef(ref) {
+    return (ref in this._archive.$objects);
+  }
+
+  getByRef(ref) {
+    return this._archive.$objects[ref];
+  }
+
 };
