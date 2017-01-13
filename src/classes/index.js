@@ -1,31 +1,49 @@
 'use strict';
 
+const atob = require('atob');
+
 const classes = module.exports = {};
 
-const classFactory = (literals, refs) => {
+const classFactory = (opts) => {
+  const literals = Array.isArray(opts.literals) ? opts.literals : null;
+  const allLiterals = opts.literals === true;
+
+  const refs = Array.isArray(opts.refs) ? opts.refs : null;
+  const allRefs = opts.refs === true;
+
   return function(obj, archive) {
-    if (literals === true) {
+
+    if (allLiterals) {
       Object.assign(this, obj);
-    } else if (Array.isArray(literals)) {
+    } else if (literals) {
       literals.forEach(key => this[key] = obj[key]);
     }
-    if (Array.isArray(refs)) {
+
+    if (allRefs) {
+      archive.deserializeAll(obj, this, literals);
+    } else if (refs) {
       refs.forEach(key => this[key] = archive.deserializeByRef(obj[key]));
     }
+
   };
 };
 
-classes.MSImmutableDocumentData = function(obj, archive) {
-  archive.deserializeAll(obj, this);
-};
+/**
+ * This is the top-level document object, or "root".
+ */
+classes.MSImmutableDocumentData = classFactory({
+  literals: [
+    'currentPageIndex',
+  ],
+  refs: true,
+});
 
-/*
- * obj has the format: { "NS.object.#": <ref> }, where # is the array index and
- * <ref> is a reference to the object at that index
+/**
+ * obj has the format: { "NS.object.#": <ref> }, where # is the array index
+ * and <ref> is a reference to the object at that index
  */
 classes.NSMutableArray = function(obj, archive) {
-  // We want NSMutableArray to be Array-like
-  const ret = Object.create(Array.prototype);
+  const array = [];
 
   Object.keys(obj).forEach(k => {
     if (k === '$class') return;
@@ -36,17 +54,27 @@ classes.NSMutableArray = function(obj, archive) {
     } else {
       throw new Error('invalid array index');
     }
-    ret[idx] = archive.deserializeByRef(obj[k]);
+    array[idx] = archive.deserializeByRef(obj[k]);
   });
 
-  return ret;
+  return array;
 };
 
+// XXX should NSArray be mutable? maybe it doesn't matter
+classes.NSArray = classes.NSMutableArray;
 
+// an immutable array has a reference to an NSArray
 classes.MSImmutableArray = function(obj, archive) {
   return archive.deserializeByRef(obj.array_do);
 };
 
+/**
+ * A serialized NSDictionary has the format:
+ *
+ * {"NS.key.#": <ref>, "NS.object.#": <ref>}
+ *
+ * where each pair of key and object references another object.
+ */
 classes.NSDictionary = function(obj, archive) {
   const KEY_PATTERN = /^NS\.key.(\d+)$/;
   const OBJ_PREFIX = 'NS.object.';
@@ -63,189 +91,189 @@ classes.NSDictionary = function(obj, archive) {
   });
 };
 
-classes.MSImmutableImageCollection = function(obj, archive) {
-  this.images = obj.images;
+/**
+ * NSColor is seralized as a buffer of base64 characters and a null
+ * terminator. Its string form looks like:
+ *
+ * "<red> <green> <blue>( <alpha>)"
+ */
+classes.NSColor = function(data, archive) {
+  const str = atob(data.NSRGB.toString('base64'));
+  const parts = str.substr(0, str.length - 1)
+    .split(' ')
+    .map(Number);
+  const hasAlpha = parts.length === 4;
+  this.red = parts[0];
+  this.green = parts[1];
+  this.blue = parts[2];
+  this.alpha = hasAlpha ? parts[3] : 1;
 };
 
-classes.MSImmutableAssetCollection = function(obj, archive) {
-  this.gradients = archive.deserializeByRef(obj.gradients);
-  this.colors = archive.deserializeByRef(obj.colors);
-  this.imageCollection = archive.deserializeByRef(obj.imageCollection);
-  this.images = archive.deserializeByRef(obj.images);
-};
+classes.MSImmutableImageCollection = classFactory({
+  refs: ['images'],
+});
 
-classes.MSImmutableSharedLayerStyleContainer = function(obj, archive) {
-  this.objects = obj.objects;
-};
+classes.MSImmutableAssetCollection = classFactory({
+  refs: ['gradients', 'colors', 'imageCollection', 'images'],
+});
 
-classes.MSImmutableSharedLayerContainer = function(obj, archive) {
-  this.objects = obj.objects;
-};
+classes.MSImmutableSharedLayerStyleContainer = classFactory({
+  refs: ['objects'],
+});
 
-classes.MSImmutableSharedLayerTextStyleContainer = function(obj, archive) {
-  this.objects = obj.objects;
-};
+classes.MSImmutableSharedLayerContainer = classFactory({
+  refs: ['objects'],
+});
 
-classes.MSImmutableExportOptions = function(obj, archive) {
-  this.sizes = obj.sizes;
-  this.includedLayerIds = obj.includedLayerIds;
-  this.layerOptions = obj.layerOptions;
-  this.shouldTrim = obj.shouldTrim;
-};
+classes.MSImmutableSharedLayerTextStyleContainer = classFactory({
+  refs: ['objects'],
+});
 
-classes.MSImmutableRect = function(obj, archive) {
-  this.y = obj.y;
-  this.x = obj.x;
-  this.constrainProportions = obj.constrainProportions;
-  this.width = obj.width;
-  this.height = obj.height;
-};
+classes.MSImmutableExportOptions = classFactory({
+  literals: ['shouldTrim'],
+  refs: ['sizes', 'includedLayerIds', 'layerOptions'],
+});
 
-classes.MSImmutableStyle = function(obj, archive) {
-  this.startDecorationType = obj.startDecorationType;
-  this.sharedObjectId = obj.sharedObjectId;
-  this.miterLimit = obj.miterLimit;
-  this.textStyle = obj.textStyle;
-  this.startDecorationType = obj.startDecorationType;
-  this.endDecorationType = obj.endDecorationType;
-  this.borders = obj.borders;
-  this.fills = obj.fills;
-};
+classes.MSImmutableRect = classFactory({
+  literals: ['x', 'y', 'width', 'height', 'constrainProportions'],
+});
 
-classes.MSImmutableColor = function(obj, archive) {
-  this.red = obj.red;
-  this.blue = obj.blue;
-  this.green = obj.green;
-  this.alpha = obj.alpha;
-};
+classes.MSImmutableStyle = classFactory({
+  literals: [
+    'endDecorationType',
+    'miterLimit',
+    'startDecorationType',
+  ],
+  refs: true
+});
 
-classes.MSImmutableStyleBorder = function(obj, archive) {
-  this.thickness = obj.thickness;
-  this.fillType = obj.fillType;
-  this.isEnabled = obj.isEnabled;
-  this.position = obj.position;
-  this.color = archive.deserializeByRef(obj.color);
-};
+classes.MSImmutableColor = classFactory({
+  literals: ['red', 'green', 'blue', 'alpha'],
+});
+
+classes.MSImmutableStyleBorder = classFactory({
+  literals: [
+    'fillType',
+    'isEnabled',
+    'position',
+    'thickness',
+  ],
+  refs: [
+    'color',
+  ],
+});
 
 classes.MSImmutableBorderStyleCollection = function(obj, archive) {
   return archive.deserializeByRef(obj.array_do);
 };
 
-classes.MSImmutableStyleFill = function(obj, archive) {
-  this.color = archive.deserializeByRef(obj.color);
-  this.image = archive.deserializeByRef(obj.image);
-  this.fillType = archive.deserializeByRef(obj.fillType);
-  this.noiseIntensity = obj.noiseIntensity;
-  this.patternFillType = obj.patternFillType;
-  this.patternTileScale = obj.patternTileScale;
-  this.isEnabled = obj.isEnabled;
-};
+classes.MSImmutableStyleFill = classFactory({
+  literals: [
+    'isEnabled',
+    'noiseIntensity',
+    'patternTileScale',
+  ],
+  refs: [
+    'color',
+    'image',
+    'fillType',
+    'patternFillType',
+  ],
+});
 
 classes.MSImmutableFillStyleCollection = function(obj, archive) {
   this.array =  archive.deserializeByRef(obj.array_do);
 };
 
-classes.MSImmutableCurvePoint = function(obj, archive) {
-  this.hasCurveForm = obj.hasCurveForm;
-  this.curveMode = obj.curveMode;
-  this.point = archive.deserializeByRef(obj.point);
-  this.curveFrom = archive.deserializeByRef(obj.curveFrom);
-  this.curveTo = archive.deserializeByRef(obj.curveTo);
-  this.hasCurveTo = obj.hasCurveTo;
-  this.cornerRadius = obj.cornerRadius;
-};
+classes.MSImmutableCurvePoint = classFactory({
+  literals: [
+    'cornerRadius',
+    'curveMode',
+    'hasCurveForm',
+    'hasCurveTo',
+  ],
+  refs: [
+    'curveFrom',
+    'curveTo',
+    'point',
+  ],
+});
 
-classes.MSImmutableShapePath = function(obj, archive) {
-  this.points = archive.deserializeByRef(obj.points);
-  this.isClosed = obj.isClosed;
-};
+classes.MSImmutableShapePath = classFactory({
+  literals: ['isClosed'],
+  refs: ['points'],
+});
 
-classes.MSImmutableRectangleShape = function(obj, archive) {
-  this.originalObjectId = obj.originalObjectId;
-  this.isFlippedHorizontal = obj.isFlippedHorizontal;
-  this.hasConvertedToNewRoundCorners = obj.hasConvertedToNewRoundCorners;
-  this.rotation = obj.rotation;
-  this.frame = obj.originalObjectId;
-  this.do_objectID = obj.do_objectID;
-  this.layerListExpandedType = obj.layerListExpandedType;
-  this.exportOptions = obj.exportOptions;
-  this.edited = obj.edited;
-  this.path = obj.path;
-  this.isFlippedVertical = obj.isFlippedVertical;
-  this.nameIsFixed = obj.nameIsFixed;
-  this.name = obj.name;
-  this.isVisible = obj.isVisible;
-  this.userInfo = obj.userInfo;
-  this.isLocked = obj.isLocked;
-  this.shouldBreakMaskChain = obj.shouldBreakMaskChain;
-  this.fixedRadius = obj.fixedRadius;
-  this.booleanOperation = obj.booleanOperation;
-};
+classes.MSImmutableRectangleShape = classFactory({
+  literals: [
+    'booleanOperation',
+    'do_objectID',
+    'edited',
+    'fixedRadius',
+    'hasConvertedToNewRoundCorners',
+    'isFlippedHorizontal',
+    'isFlippedVertical',
+    'isLocked',
+    'isVisible',
+    'layerListExpandedType',
+    'name',
+    'nameIsFixed',
+    'originalObjectId',
+    'rotation',
+    'shouldBreakMaskChain',
+  ],
+  refs: [
+    'exportOptions',
+    'frame',
+    'path',
+    'userInfo',
+  ],
+});
 
-classes.MSImmutableShapeGroup = function(obj, archive) {
-  this.originalObjectID = obj.originalObjectID;
-  this.isFlippedHorizontal = obj.isFlippedHorizontal;
-  this.style = obj.style;
-  this.rotation = obj.rotation;
-  this.frame = obj.frame;
-  this.hasClickThrough = obj.hasClickThrough;
-  this.layerListExpandedType = obj.layerListExpandedType;
-  this.exportOptions = obj.exportOptions;
-  this.windingRule = obj.windingRule;
-  this.do_objectID = obj.do_objectID;
-  this.isFlippedVertical = obj.isFlippedVertical;
-  this.clippingMaskMode = obj.clippingMaskMode;
-  this.nameIsFixed = obj.nameIsFixed;
-  this.layers = obj.layers;
-  this.isVisible = obj.isVisible;
-  this.hasClippingMask = obj.hasClippingMask;
-  this.name = obj.name;
-  this.userInfo = obj.userInfo;
-  this.isLocked = obj.isLocked;
-  this.shouldBreakMaskChain = obj.shouldBreakMaskChain;
-  this.sharedObjectID = obj.sharedObjectID;
-};
+classes.MSImmutableShapeGroup = classFactory({
+  literals: [
+    'clippingMaskMode',
+    'do_objectID',
+    'hasClickThrough',
+    'hasClippingMask',
+    'isFlippedHorizontal',
+    'isFlippedVertical',
+    'isLocked',
+    'isVisible',
+    'layerListExpandedType',
+    'name',
+    'nameIsFixed',
+    'originalObjectID',
+    'rotation',
+    'shouldBreakMaskChain',
+    'windingRule',
+  ],
+  refs: [
+    'frame',
+    'exportOptions',
+    'layers',
+    'sharedObjectID',
+    'style',
+    'userInfo',
+  ],
+});
 
-classes.MSImmutableRulerData = function(obj, archive) {
-  this.base = obj.base;
-  this.guides = obj.guides;
-};
+classes.MSImmutableRulerData = classFactory({
+  refs: true
+});
 
-classes.MSImmutablePage = function(obj, archive) {
-  this.originalObjectId = obj.originalObjectId;
-  this.isFlippedHorizontal = obj.isFlippedHorizontal;
-  this.style = archive.deserializeByRef(obj.style);
-  this.rotation = obj.rotation;
-  this.frame = archive.deserializeByRef(obj.frame);
-  this.hasClickThrough = obj.hasClickThrough;
-  this.horizontalRulerData = archive.deserializeByRef(obj.horizontalRulerData);
-  this.exportOptions = archive.deserializeByRef(obj.exportOptions);
-  this.layerListExpandedType = archive.deserializeByRef(obj.layerListExpandedType);
-  this.zoomValue = obj.zoomValue;
-  this.do_objectID = obj.do_objectID;
-  this.verticalRulerData = archive.deserializeByRef(obj.verticalRulerData);
-  this.isFlippedVertical = obj.isFlippedVertical;
-  this.nameIsFixed = obj.nameIsFixed;
-  this.name = archive.deserializeByRef(obj.name);
-  this.layers = archive.deserializeByRef(obj.layers);
-  this.isVisible = obj.isVisible;
-  this.userInfo = archive.deserializeByRef(obj.userInfo);
-  this.grid = archive.deserializeByRef(obj.grid);
-  this.isLocked = obj.isLocked;
-  this.userInfo = obj.userInfo;
-  this.scrollOrigin = archive.deserializeByRef(obj.scrollOrigin);
-  this.layout = archive.deserializeByRef(obj.layout);
-  this.shouldBreakMaskChain = obj.shouldBreakMaskChain;
-  this.sharedObjectID = obj.sharedObjectID;
-};
-
-classes.MSImmutableDocumentData = function(obj, archive) {
-  this.assets = archive.deserializeByRef(obj.assets);
-  this.currentPageIndex = obj.currentPageIndex;
-  this.layerStyles = archive.deserializeByRef(obj.layerStyles);
-  this.pages = archive.deserializeByRef(obj.pages);
-  this.enableSliceInteraction = obj.enableSliceInteraction;
-  this.layerTextStyles = archive.deserializeByRef(obj.layerTextStyles);
-  this.enableLayerInteraction = obj.enableLayerInteraction;
-  this.layerSymbols = archive.deserializeByRef(obj.layerSymbols);
-};
+classes.MSImmutablePage = classFactory({
+  literals: [
+    'do_objectID',
+    'hasClickThrough',
+    'isFlippedHorizontal',
+    'isFlippedVertical',
+    'isLocked',
+    'isVisible',
+    'nameIsFixed',
+    'rotation',
+    'shouldBreakMaskChain',
+    'zoomValue',
+  ],
+  refs: true,
+});
